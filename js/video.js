@@ -54,25 +54,31 @@ document.querySelector("#mute").addEventListener("click", function() {
     if (video.muted) {
         video.muted = false;
         this.textContent = "Mute";
+		console.log("Unmute")
     } else {
         video.muted = true;
         this.textContent = "Unmute";
+		console.log("Mute")
     }
 });
 
 // Volume Slider
-document.querySelector("#volumeSlider").addEventListener("input", function() {
+document.querySelector("#slider").addEventListener("input", function() {
     video.volume = this.value / 100;
     updateVolumeInfo();
 });
 
-// Update Volume Info
 function updateVolumeInfo() {
-    console.log("Volume level is " + video.volume * 100 + "%");
+    var volumeDisplay = document.querySelector('#volume');
+    volumeDisplay.textContent = Math.round(video.volume * 100) + "%";
 }
 
 // Styled/Original
-document.querySelector("#styled").addEventListener("click", function() {
+document.querySelector("#vintage").addEventListener("click", function() {
     video.classList.toggle('oldSchool');
+});
+
+document.querySelector("#orig").addEventListener("click", function() {
+	video.classList.toggle('oldSchool');
 });
 
